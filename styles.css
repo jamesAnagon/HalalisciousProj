@@ -370,4 +370,22 @@ a { color: inherit; }
     width: 46px;
     height: 46px;
   }
+
+  .marquee {
+    white-space: nowrap;
+}
+
+.marquee-content {
+    animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
 }
