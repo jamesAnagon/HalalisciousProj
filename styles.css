@@ -504,6 +504,7 @@ a { color: inherit; }
   height: 50%;
   display: flex;
   align-items: center;
+  overflow: hidden;
 
 }
 .carousel1::-webkit-scrollbar{
