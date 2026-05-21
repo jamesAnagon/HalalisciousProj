@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- SITE NAVIGATION: shared brand logo and links used across all pages. -->
   <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm site-nav">
     <div class="container">
       <a class="brand-mark" href="index.html">
@@ -29,6 +30,7 @@
     </div>
   </nav>
 
+  <!-- PAGE HERO: introduces the current page with a short title and description. -->
   <header class="page-hero">
     <div class="container" data-aos="fade-up">
       <p class="eyebrow">Menu</p>
@@ -37,7 +39,9 @@
     </div>
   </header>
 
+  <!-- MAIN CONTENT: food cards first, then drink/service-style cards. -->
   <main>
+    <!-- FOOD MENU: responsive grid of halal food choices. -->
     <section class="section">
       <div class="container">
         <div class="mb-4" data-aos="fade-up">
@@ -121,6 +125,7 @@
       </div>
     </section>
 
+    <!-- DRINKS MENU: smaller refreshment options in the light feature band. -->
     <section class="section feature-band">
       <div class="container">
         <div class="mb-4" data-aos="fade-up">
@@ -154,6 +159,7 @@
     </section>
   </main>
 
+  <!-- FOOTER: repeated site links, logo, socials, and copyright. -->
   <footer class="site-footer">
     <div class="container">
       <div class="row g-4 align-items-center">
@@ -162,13 +168,13 @@
         </div>
         <div class="col-12 col-md-4">
           <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
-            <a href="ABOUT.html">About</a>
-            <a href="SERVICES.html">Services</a>
-            <a href="CONTACT.html">Contact</a>
+            <a class="footer-item" href="ABOUT.html">About</a>
+            <a class="footer-item" href="SERVICES.html">Services</a>
+            <a class="footer-item" href="CONTACT.html">Contact</a>
           </div>
         </div>
         <div class="col-12 col-md-4 text-center text-md-end">
-          <a class="social-link me-2" href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a class="social-link me-2" href="https://www.facebook.com/profile.php?id=61564650326586" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           <a class="social-link me-2" href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
           <a class="social-link" href="#" aria-label="X"><i class="fab fa-twitter"></i></a>
         </div>
@@ -177,6 +183,7 @@
     </div>
   </footer>
 
+  <!-- SCRIPTS: Bootstrap powers the mobile nav, AOS powers scroll animations. -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/3.0.0-beta.6/aos.js"></script>
   <script>AOS.init({ duration: 700, once: true, offset: 80 });</script>
