@@ -371,33 +371,45 @@ a { color: inherit; }
     height: 46px;
   }
 
-  /* MARQUEE */
+/* =========================
+   MARQUEE SECTION
+========================= */
 
-.marquee {
-  overflow: hidden;
+.announcement-card {
+  flex-shrink: 0;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 0.9rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
   white-space: nowrap;
-  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
-.marquee-content {
-  display: flex;
-  gap: 1rem;
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+.scroll {
   width: max-content;
+  display: flex;
   animation: scroll 15s linear infinite;
 }
 
-.marquee-content:hover {
+.scroll:hover {
   animation-play-state: paused;
 }
 
 @keyframes scroll {
+
   from {
     transform: translateX(0);
   }
 
   to {
-    transform: translateX(calc(-50% - 0.5rem));
+    transform: translateX(-50%);
   }
+
 }
 
 .reverse {
@@ -405,7 +417,6 @@ a { color: inherit; }
 }
 
 .marquee-image {
-  flex-shrink: 0;
-  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 }
