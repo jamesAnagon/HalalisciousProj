@@ -379,13 +379,24 @@ a { color: inherit; }
     animation: marquee 15s linear infinite;
 }
 
-@keyframes marquee {
-    from {
-        transform: translateX(0);
-    }
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - 1rem));
+  }
+}
 
-    to {
-        transform: translateX(-50%);
-    }
+.scroll {
+  animation: scroll 10s linear infinite;
+}
+
+.reverse {
+  animation-direction: reverse;
+}
+
+.marquee-image {
+  -webkit-transform: translateZ(0);
 }
 }
