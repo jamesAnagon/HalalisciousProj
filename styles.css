@@ -371,25 +371,33 @@ a { color: inherit; }
     height: 46px;
   }
 
-  .marquee {
-    white-space: nowrap;
+  /* MARQUEE */
+
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
 }
 
 .marquee-content {
-    animation: marquee 15s linear infinite;
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: scroll 15s linear infinite;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
 }
 
 @keyframes scroll {
   from {
     transform: translateX(0);
   }
-  to {
-    transform: translateX(calc(-100% - 1rem));
-  }
-}
 
-.scroll {
-  animation: scroll 10s linear infinite;
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
 }
 
 .reverse {
@@ -397,6 +405,7 @@ a { color: inherit; }
 }
 
 .marquee-image {
-  -webkit-transform: translateZ(0);
+  flex-shrink: 0;
+  transform: translateZ(0);
 }
 }
