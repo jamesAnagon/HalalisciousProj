@@ -20,6 +20,31 @@ body {
   font-family: "Poppins", Arial, sans-serif;
   background: var(--cream);
 }
+#btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: black;
+    color: white;
+    border: 1px solid grey;
+    cursor: pointer;
+    display: none;
+    z-index: 9999;
+    transition: background 180ms ease;
+    transform: 180ms ease;
+    box-shadow: 180ms ease;
+
+ }
+ #btn:hover {
+    background: var(--accent);
+    color: var(--paper);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 30px rgba(142, 67, 25, 0.24);
+ }
+
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 
@@ -132,12 +157,14 @@ a { color: inherit; }
   position: relative;
   z-index: 2;
 }
-.hero h1 {
+
+.hero h2 {
   max-width: 780px;
   font-size: clamp(2.8rem, 7vw, 6.25rem);
   line-height: 0.98;
   font-weight: 700;
 }
+
 
 .page-hero h1 {
   max-width: 820px;
