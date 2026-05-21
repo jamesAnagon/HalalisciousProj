@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Arbutus&family=Poppins:wght@400;500;600;700&display=swap");
 
+/* =========================
+   Theme Tokens
+   Shared colors, shadows, and brand values used across every page.
+   ========================= */
 :root {
   --ink: #1f1b16;
   --muted: #6f665d;
@@ -12,6 +16,10 @@
   --shadow: 0 18px 45px rgba(31, 27, 22, 0.09);
 }
 
+/* =========================
+   Base Reset
+   Keeps sizing predictable and applies the global font/background.
+   ========================= */
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -20,6 +28,8 @@ body {
   font-family: "Poppins", Arial, sans-serif;
   background: var(--cream);
 }
+
+/* Floating utility button. It stays hidden until JavaScript chooses to show it. */
 #btn {
     position: fixed;
     bottom: 20px;
@@ -33,9 +43,7 @@ body {
     cursor: pointer;
     display: none;
     z-index: 9999;
-    transition: background 180ms ease;
-    transform: 180ms ease;
-    box-shadow: 180ms ease;
+    transition: background 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 
  }
  #btn:hover {
@@ -48,6 +56,10 @@ body {
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 
+/* =========================
+   Navigation
+   Shared header/navbar styles used by all HTML pages.
+   ========================= */
 .site-nav {
   background: rgba(255, 250, 242, 0.94);
   border-bottom: 1px solid var(--line);
@@ -100,8 +112,14 @@ a { color: inherit; }
 .nav-link:hover::after,
 .nav-link.active::after { transform: scaleX(1); }
 
+/* =========================
+   Shared Layout
+   Section spacing, reusable headings, page heroes, and buttons.
+   ========================= */
 .section { padding: clamp(4rem, 7vw, 6.5rem) 0; }
 .section-tight { padding: clamp(2.75rem, 5vw, 4.5rem) 0; }
+
+/* Home hero uses Bootstrap's carousel as a full-background image layer. */
 .hero {
   min-height: calc(100vh - 82px);
   display: grid;
@@ -120,6 +138,7 @@ a { color: inherit; }
   pointer-events: none;
 }
 
+/* Overlay layer stays behind the hero text but above the images. */
 .hero-carousel {
   position: absolute;
   inset: 0;
@@ -215,6 +234,11 @@ a { color: inherit; }
   color: var(--paper);
   transform: translateY(-2px);
 }
+
+/* =========================
+   Cards And Forms
+   Reusable card hover effects, menu images, service icons, and contact inputs.
+   ========================= */
 .clean-card,
 .menu-card,
 .service-card {
@@ -266,6 +290,11 @@ a { color: inherit; }
   border-color: var(--accent);
   box-shadow: 0 0 0 0.2rem rgba(194, 106, 45, 0.16);
 }
+
+/* =========================
+   Footer
+   The same footer structure is shared across the site.
+   ========================= */
 .site-footer {
   padding: 2.5rem 0;
   background: #17130f;
@@ -277,6 +306,12 @@ a { color: inherit; }
   transition: color 180ms ease;
 }
 .site-footer a:hover { color: var(--paper); }
+.footer-item {
+  display: inline-block;
+  line-height: 1.3;
+  padding: 0.2rem 0.25rem;
+  white-space: nowrap;
+}
 .footer-logo {
   width: 72px;
   height: 72px;
@@ -297,6 +332,10 @@ a { color: inherit; }
   transform: translateY(-2px);
 }
 
+/* =========================
+   Responsive Rules
+   Breakpoints are grouped from tablet down to phone sizes.
+   ========================= */
 @media (max-width: 991px) {
   .nav-link {
     margin-left: 0;
@@ -306,6 +345,67 @@ a { color: inherit; }
     left: 0;
     right: auto;
     width: 48px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .site-footer {
+    padding: 2.15rem 0;
+  }
+
+  .site-footer .row {
+    --bs-gutter-x: 0.75rem;
+    --bs-gutter-y: 1rem;
+  }
+
+  .site-footer .gap-3 {
+    /* Lets footer links wrap on iPad/tablet widths instead of clipping. */
+    flex-wrap: wrap;
+    gap: 0.5rem 0.7rem !important;
+  }
+
+  .footer-logo {
+    width: 64px;
+    height: 64px;
+  }
+
+  .footer-item {
+    font-size: 0.95rem;
+  }
+
+  .social-link {
+    width: 38px;
+    height: 38px;
+  }
+}
+@media (min-width: 768px) and (max-width: 899.98px) {
+  .footer-item {
+    font-size: 0.9rem;
+  }
+
+  .social-link {
+    width: 36px;
+    height: 36px;
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .site-footer {
+    padding: 2rem 0;
+    text-align: center;
+  }
+
+  .site-footer .row {
+    --bs-gutter-y: 1rem;
+  }
+
+  .footer-logo {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto;
+  }
+
+  .site-footer .gap-3 {
+    flex-wrap: wrap;
+    gap: 0.5rem 0.85rem !important;
   }
 }
 @media (max-width: 575px) {
@@ -357,66 +457,172 @@ a { color: inherit; }
   }
 
   .site-footer {
-    padding: 2rem 0;
+    padding: 1.85rem 0;
     text-align: center;
   }
 
   .footer-logo {
     margin: 0 auto;
+    width: 58px;
+    height: 58px;
+  }
+
+  .site-footer .row {
+    --bs-gutter-y: 0.85rem;
+  }
+
+  .site-footer .gap-3 {
+    gap: 0.45rem !important;
+  }
+
+  .footer-item {
+    font-size: 0.92rem;
+  }
+
+  .social-link {
+    width: 36px;
+    height: 36px;
   }
 
   .brand-text { font-size: 1rem; }
   .brand-mark img {
-    width: 46px;
-    height: 46px;
+    width: 50px;
+    height: 50px;
   }
 
-/* =========================
-   MARQUEE SECTION
-========================= */
 
-.announcement-card {
-  flex-shrink: 0;
-  background: var(--paper);
-  color: var(--ink);
-  padding: 0.9rem 1.5rem;
-  border-radius: 999px;
-  font-weight: 600;
-  white-space: nowrap;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 /* =========================
-   SCROLL ANIMATION
-========================= */
-
-.scroll {
-  width: max-content;
+   Payment Methods Carousel
+   Infinite logo strip on the Services page.
+   The HTML repeats .group1 twice so translating one full group creates a loop.
+   ========================= */
+.carousel1{
+  margin: 1.25rem 0 100px;
+  width: 100%;
+  height: 50%;
   display: flex;
-  animation: scroll 15s linear infinite;
+  align-items: center;
+
+}
+.carousel1::-webkit-scrollbar{
+  display: none;
+}
+.group1 {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  height: 100%;
+  padding: 0 clamp(0.75rem, 2vw, 1.5rem);
+  animation: spin 18s linear infinite;
+  /* Hint to the browser that this row will be animated horizontally. */
+  will-change: transform;
+  
+}
+.card1 {
+  flex: 0 0 15rem;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+  align-items: center;
+}
+.card1 img {
+  display: block;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  transform-origin: center center;
+}
+.gcash {
+  background-color: #007DFF;
+}
+.bdo {
+  background-color: #003B7A;
+}
+.bpi {
+  background-color: #8B1116;
+}
+.maya {
+  background-color: #111111;
+}
+.paypal {
+  background-color: white;
+}
+.gotyme {
+  background-color: #00f5fa;
+}
+.visa {
+  background-color: #ddddda;
 }
 
-.scroll:hover {
-  animation-play-state: paused;
+/* Some image files include extra empty space, so these scales visually balance them. */
+.card1 .logo-gcash,
+.card1 .logo-gotyme {
+  transform: scale(0.86);
+}
+.card1 .logo-bpi,
+.card1 .logo-paypal {
+  transform: scale(1.4);
+}
+.card1 .logo-bdo,
+.card1 .logo-maya,
+.card1 .logo-visa {
+  transform: scale(0.94);
 }
 
-@keyframes scroll {
+@keyframes spin {
+  /* Use transform instead of the newer translate property for better browser support. */
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
 
-  from {
-    transform: translateX(0);
+@media (max-width: 575px) {
+  .carousel1 {
+    margin: 1rem 0 64px;
+    height: 5.5rem;
   }
 
-  to {
-    transform: translateX(-50%);
+  .card1 {
+    flex-basis: 10rem;
+  }
+}
+
+/* Extra-small phones need slightly tighter footer sizing. */
+@media (max-width: 374.98px) {
+  .site-footer {
+    padding: 1.5rem 0;
   }
 
-}
+  .footer-logo {
+    width: 50px;
+    height: 50px;
+  }
 
-.reverse {
-  animation-direction: reverse;
-}
+  .footer-item {
+    font-size: 0.84rem;
+    padding: 0.1rem 0.2rem;
+  }
 
-.marquee-image {
-  -webkit-transform: translateZ(0);
-}
+  .social-link {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+
+  .site-footer .small {
+    font-size: 0.75rem;
+  }
+
+  .carousel1 {
+    background: #f8ead9;
+  }
 }
