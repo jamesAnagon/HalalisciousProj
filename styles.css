@@ -627,3 +627,16 @@ a { color: inherit; }
     background: #f8ead9;
   }
 }
+.badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(194, 106, 45, 0.24);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1.05em;
+}
+.buy-link:hover::after {
+    content: "Buy?";
+    color: blue;
+    font-family: Arial;
+    margin-left: 5px;
+    font-size: 1.05em;
+}
