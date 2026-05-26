@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Arbutus&family=Poppins:wght@400;500;600;700&display=swap");
 
-/* =========================
-   Theme Tokens
-   Shared colors, shadows, and brand values used across every page.
-   ========================= */
 :root {
   --ink: #1f1b16;
   --muted: #6f665d;
@@ -12,59 +8,54 @@
   --line: #eadfce;
   --accent: #c26a2d;
   --accent-dark: #8e4319;
-  --sage: #51695a;
-  --shadow: 0 18px 45px rgba(31, 27, 22, 0.09);
 }
 
-/* =========================
-   Base Reset
-   Keeps sizing predictable and applies the global font/background.
-   ========================= */
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  margin: 0;
   color: var(--ink);
   font-family: "Poppins", Arial, sans-serif;
   background: var(--cream);
 }
 
-/* Floating utility button. It stays hidden until JavaScript chooses to show it. */
+img {
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
 #btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: black;
-    color: white;
-    border: 1px solid grey;
-    cursor: pointer;
-    display: none;
-    z-index: 9999;
-    transition: background 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  display: none;
+  width: 45px;
+  height: 45px;
+  border: 1px solid grey;
+  border-radius: 50%;
+  color: var(--paper);
+  background: #000;
+  transition: 180ms ease;
+}
 
- }
- #btn:hover {
-    background: var(--accent);
-    color: var(--paper);
-    transform: translateY(-2px);
-    box-shadow: 0 16px 30px rgba(142, 67, 25, 0.24);
- }
+#btn:hover,
+.social-link:hover {
+  color: var(--paper);
+  background: var(--accent);
+  transform: translateY(-2px);
+}
 
-img { max-width: 100%; display: block; }
-a { color: inherit; }
-
-/* =========================
-   Navigation
-   Shared header/navbar styles used by all HTML pages.
-   ========================= */
 .site-nav {
   background: rgba(255, 250, 242, 0.94);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(14px);
 }
+
 .brand-mark {
   display: inline-flex;
   align-items: center;
@@ -73,18 +64,25 @@ a { color: inherit; }
   font-weight: 700;
   text-decoration: none;
 }
+
+.brand-mark img,
+.footer-logo {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .brand-mark img {
   width: 54px;
   height: 54px;
-  object-fit: cover;
-  border-radius: 50%;
   border: 2px solid var(--paper);
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
 }
+
 .brand-text {
   font-family: "Arbutus", serif;
   font-size: clamp(1.1rem, 2vw, 1.45rem);
 }
+
 .nav-link {
   position: relative;
   margin-left: 0.5rem;
@@ -92,34 +90,45 @@ a { color: inherit; }
   font-weight: 600;
   transition: color 180ms ease, transform 180ms ease;
 }
+
 .nav-link::after {
   content: "";
   position: absolute;
-  left: 0.5rem;
   right: 0.5rem;
   bottom: 0.25rem;
+  left: 0.5rem;
   height: 2px;
   background: var(--accent);
   transform: scaleX(0);
-  transform-origin: center;
   transition: transform 180ms ease;
 }
+
 .nav-link:hover,
 .nav-link.active {
   color: var(--accent-dark) !important;
   transform: translateY(-1px);
 }
+
 .nav-link:hover::after,
-.nav-link.active::after { transform: scaleX(1); }
+.nav-link.active::after {
+  transform: scaleX(1);
+}
 
-/* =========================
-   Shared Layout
-   Section spacing, reusable headings, page heroes, and buttons.
-   ========================= */
-.section { padding: clamp(4rem, 7vw, 6.5rem) 0; }
-.section-tight { padding: clamp(2.75rem, 5vw, 4.5rem) 0; }
+.section {
+  padding: clamp(4rem, 7vw, 6.5rem) 0;
+}
 
-/* Home hero uses Bootstrap's carousel as a full-background image layer. */
+.section-tight {
+  padding: clamp(2.75rem, 5vw, 4.5rem) 0;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
 .hero {
   min-height: calc(100vh - 82px);
   display: grid;
@@ -138,7 +147,6 @@ a { color: inherit; }
   pointer-events: none;
 }
 
-/* Overlay layer stays behind the hero text but above the images. */
 .hero-carousel {
   position: absolute;
   inset: 0;
@@ -151,10 +159,15 @@ a { color: inherit; }
   height: 100%;
 }
 
-.hero-carousel img {
+.hero-carousel img,
+.menu-card img,
+.about-photo {
   width: 100%;
-  height: 100%;
   object-fit: cover;
+}
+
+.hero-carousel img {
+  height: 100%;
 }
 
 .hero-carousel .carousel-control-prev,
@@ -177,147 +190,181 @@ a { color: inherit; }
   z-index: 2;
 }
 
+.hero h2,
+.page-hero h1 {
+  font-weight: 700;
+  line-height: 1.05;
+}
+
 .hero h2 {
   max-width: 780px;
   font-size: clamp(2.8rem, 7vw, 6.25rem);
-  line-height: 0.98;
-  font-weight: 700;
 }
 
-
-.page-hero h1 {
-  max-width: 820px;
-  font-size: clamp(2rem, 4.2vw, 4rem);
-  line-height: 1.08;
-  font-weight: 700;
-}
-.hero p,
-.page-hero p,
-.section-lead {
-  max-width: 650px;
-  color: rgba(255, 255, 255, 0.84);
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
-}
-.section-lead { color: var(--muted); }
 .page-hero {
-  background: var(--ink);
-  color: var(--paper);
   min-height: min(46vh, 420px);
   display: grid;
   align-items: center;
   padding: clamp(2.75rem, 5vw, 4.5rem) 0;
+  color: var(--paper);
+  background: var(--ink);
 }
-.eyebrow {
-  color: var(--accent);
-  font-weight: 700;
-  letter-spacing: 0;
-  text-transform: uppercase;
+
+.page-hero h1 {
+  max-width: 820px;
+  font-size: clamp(2rem, 4.2vw, 4rem);
 }
+
+.hero p,
+.page-hero p {
+  max-width: 650px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+}
+
+.section-lead {
+  max-width: 650px;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+}
+
 .btn-brand {
+  color: var(--paper);
   background: var(--accent);
-  color: var(--paper);
-  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  transition: 180ms ease;
 }
+
 .btn-brand:hover {
-  background: var(--accent-dark);
   color: var(--paper);
+  background: var(--accent-dark);
   transform: translateY(-2px);
   box-shadow: 0 16px 30px rgba(142, 67, 25, 0.24);
 }
+
 .btn-outline-brand {
+  color: var(--paper);
   border: 1px solid rgba(255, 255, 255, 0.52);
-  color: var(--paper);
-  transition: background 180ms ease, transform 180ms ease;
+  transition: 180ms ease;
 }
+
 .btn-outline-brand:hover {
-  background: rgba(255, 255, 255, 0.14);
   color: var(--paper);
+  background: rgba(255, 255, 255, 0.14);
   transform: translateY(-2px);
 }
 
-/* =========================
-   Cards And Forms
-   Reusable card hover effects, menu images, service icons, and contact inputs.
-   ========================= */
 .clean-card,
 .menu-card,
 .service-card {
   overflow: hidden;
   transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
+
 .clean-card:hover,
 .menu-card:hover,
 .service-card:hover {
-  transform: translateY(-6px);
   border-color: rgba(194, 106, 45, 0.35);
+  transform: translateY(-6px);
   box-shadow: 0 22px 52px rgba(31, 27, 22, 0.14);
 }
+
 .menu-card img {
-  width: 100%;
   height: 250px;
-  object-fit: cover;
   transition: transform 420ms ease;
 }
-.menu-card:hover img { transform: scale(1.05); }
-.menu-card .card-body { padding: 1.25rem; }
+
+.menu-card:hover img {
+  transform: scale(1.05);
+}
+
 .price {
   color: var(--accent-dark);
   font-weight: 700;
 }
+
+.badge {
+  transition: 180ms ease;
+}
+
+.badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(194, 106, 45, 0.24);
+}
+
+.buy-link:hover::after {
+  content: "Buy!";
+  margin-left: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 1.05em;
+}
+
 .feature-band {
   background: var(--paper);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-block: 1px solid var(--line);
 }
+
+.about-photo {
+  height: clamp(320px, 40vw, 500px);
+  border-radius: 18px !important;
+  object-position: center;
+}
+
 .icon-pill {
   width: 48px;
   height: 48px;
   display: inline-grid;
   place-items: center;
   border-radius: 50%;
-  background: #f8ead9;
   color: var(--accent-dark);
+  background: #f8ead9;
 }
-.contact-panel {
-  border-radius: 8px;
-}
+
+.contact-panel,
 .form-control {
   border-radius: 8px;
+}
+
+.form-control {
   border-color: var(--line);
   padding: 0.85rem 1rem;
 }
+
 .form-control:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 0.2rem rgba(194, 106, 45, 0.16);
 }
 
-/* =========================
-   Footer
-   The same footer structure is shared across the site.
-   ========================= */
 .site-footer {
   padding: 2.5rem 0;
-  background: #17130f;
   color: rgba(255, 255, 255, 0.72);
+  background: #17130f;
 }
+
 .site-footer a {
   color: rgba(255, 255, 255, 0.82);
   text-decoration: none;
-  transition: color 180ms ease;
 }
-.site-footer a:hover { color: var(--paper); }
+
+.site-footer a:hover {
+  color: var(--paper);
+}
+
+.site-footer .gap-3 {
+  flex-wrap: wrap;
+}
+
 .footer-item {
   display: inline-block;
-  line-height: 1.3;
   padding: 0.2rem 0.25rem;
+  line-height: 1.3;
   white-space: nowrap;
 }
+
 .footer-logo {
   width: 72px;
   height: 72px;
-  object-fit: cover;
-  border-radius: 50%;
 }
+
 .social-link {
   width: 40px;
   height: 40px;
@@ -325,89 +372,85 @@ a { color: inherit; }
   place-items: center;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.09);
-  transition: background 180ms ease, transform 180ms ease;
-}
-.social-link:hover {
-  background: var(--accent);
-  transform: translateY(-2px);
+  transition: 180ms ease;
 }
 
-/* =========================
-   Responsive Rules
-   Breakpoints are grouped from tablet down to phone sizes.
-   ========================= */
+.carousel1 {
+  margin: 1.25rem 0 100px;
+  display: flex;
+  overflow: hidden;
+}
+
+.group1 {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding: 0 clamp(0.75rem, 2vw, 1.5rem);
+  animation: spin 18s linear infinite;
+  will-change: transform;
+}
+
+.card1 {
+  flex: 0 0 15rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.card1 img {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  object-position: center;
+  transform-origin: center;
+}
+
+.gcash { background: #007dff; }
+.bdo { background: #003b7a; }
+.metrobank { background: #073b7a; }
+.bpi { background: #8b1116; }
+.maya { background: #111; }
+.paypal { background: #fff; }
+.gotyme { background: #00f5fa; }
+.visa { background: #ddddda; }
+
+.card1 .logo-gcash,
+.card1 .logo-gotyme {
+  transform: scale(0.86);
+}
+
+.card1 .logo-bpi,
+.card1 .logo-paypal {
+  transform: scale(1.4);
+}
+
+.card1 .logo-bdo,
+.card1 .logo-metrobank,
+.card1 .logo-maya,
+.card1 .logo-visa {
+  transform: scale(0.94);
+}
+
+@keyframes spin {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
 @media (max-width: 991px) {
   .nav-link {
     margin-left: 0;
-    padding: 0.7rem 0;
+    padding-block: 0.7rem;
   }
+
   .nav-link::after {
-    left: 0;
     right: auto;
+    left: 0;
     width: 48px;
   }
 }
-@media (min-width: 768px) and (max-width: 1199.98px) {
-  .site-footer {
-    padding: 2.15rem 0;
-  }
 
-  .site-footer .row {
-    --bs-gutter-x: 0.75rem;
-    --bs-gutter-y: 1rem;
-  }
-
-  .site-footer .gap-3 {
-    /* Lets footer links wrap on iPad/tablet widths instead of clipping. */
-    flex-wrap: wrap;
-    gap: 0.5rem 0.7rem !important;
-  }
-
-  .footer-logo {
-    width: 64px;
-    height: 64px;
-  }
-
-  .footer-item {
-    font-size: 0.95rem;
-  }
-
-  .social-link {
-    width: 38px;
-    height: 38px;
-  }
-}
-@media (min-width: 768px) and (max-width: 899.98px) {
-  .footer-item {
-    font-size: 0.9rem;
-  }
-
-  .social-link {
-    width: 36px;
-    height: 36px;
-  }
-}
-@media (min-width: 576px) and (max-width: 767.98px) {
-  .site-footer {
-    padding: 2rem 0;
-    text-align: center;
-  }
-
-  .site-footer .row {
-    --bs-gutter-y: 1rem;
-  }
-
-  .footer-logo {
-    width: 62px;
-    height: 62px;
-    margin: 0 auto;
-  }
-
-  .site-footer .gap-3 {
-    flex-wrap: wrap;
-    gap: 0.5rem 0.85rem !important;
-  }
-}
 @media (max-width: 575px) {
   .hero {
     min-height: calc(100vh - 72px);
@@ -419,23 +462,21 @@ a { color: inherit; }
     background: linear-gradient(180deg, rgba(31, 27, 22, 0.28), rgba(31, 27, 22, 0.9));
   }
 
-  .hero h1 {
-    font-size: clamp(2.6rem, 16vw, 4.25rem);
+  .hero h2 {
     line-height: 1;
   }
 
   .hero p {
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
     font-size: 1rem;
   }
 
   .hero-carousel .carousel-control-prev,
   .hero-carousel .carousel-control-next {
-    width: 3rem;
-    height: 3rem;
     top: auto;
     bottom: 1.15rem;
+    width: 3rem;
+    height: 3rem;
     opacity: 0.9;
   }
 
@@ -461,22 +502,19 @@ a { color: inherit; }
     text-align: center;
   }
 
+  .brand-text {
+    font-size: 1rem;
+  }
+
+  .brand-mark img {
+    width: 50px;
+    height: 50px;
+  }
+
   .footer-logo {
-    margin: 0 auto;
     width: 58px;
     height: 58px;
-  }
-
-  .site-footer .row {
-    --bs-gutter-y: 0.85rem;
-  }
-
-  .site-footer .gap-3 {
-    gap: 0.45rem !important;
-  }
-
-  .footer-item {
-    font-size: 0.92rem;
+    margin-inline: auto;
   }
 
   .social-link {
@@ -484,112 +522,8 @@ a { color: inherit; }
     height: 36px;
   }
 
-  .brand-text { font-size: 1rem; }
-  .brand-mark img {
-    width: 50px;
-    height: 50px;
-  }
-
-
-}
-
-/* =========================
-   Payment Methods Carousel
-   Infinite logo strip on the Services page.
-   The HTML repeats .group1 twice so translating one full group creates a loop.
-   ========================= */
-.carousel1{
-  margin: 1.25rem 0 100px;
-  width: 100%;
-  height: 50%;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-
-}
-.carousel1::-webkit-scrollbar{
-  display: none;
-}
-.group1 {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  height: 100%;
-  padding: 0 clamp(0.75rem, 2vw, 1.5rem);
-  animation: spin 18s linear infinite;
-  /* Hint to the browser that this row will be animated horizontally. */
-  will-change: transform;
-  
-}
-.card1 {
-  flex: 0 0 15rem;
-  display: grid;
-  place-items: center;
-  padding: 0;
-  width: 100%;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  overflow: hidden;
-  align-items: center;
-}
-.card1 img {
-  display: block;
-  margin: auto;
-  width: 100%;
-  height: 100%;
-  object-position: center;
-  transform-origin: center center;
-}
-.gcash {
-  background-color: #007DFF;
-}
-.bdo {
-  background-color: #003B7A;
-}
-.bpi {
-  background-color: #8B1116;
-}
-.maya {
-  background-color: #111111;
-}
-.paypal {
-  background-color: white;
-}
-.gotyme {
-  background-color: #00f5fa;
-}
-.visa {
-  background-color: #ddddda;
-}
-
-/* Some image files include extra empty space, so these scales visually balance them. */
-.card1 .logo-gcash,
-.card1 .logo-gotyme {
-  transform: scale(0.86);
-}
-.card1 .logo-bpi,
-.card1 .logo-paypal {
-  transform: scale(1.4);
-}
-.card1 .logo-bdo,
-.card1 .logo-maya,
-.card1 .logo-visa {
-  transform: scale(0.94);
-}
-
-@keyframes spin {
-  /* Use transform instead of the newer translate property for better browser support. */
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
-}
-
-@media (max-width: 575px) {
   .carousel1 {
-    margin: 1rem 0 64px;
-    height: 5.5rem;
+    margin-bottom: 64px;
   }
 
   .card1 {
@@ -597,20 +531,15 @@ a { color: inherit; }
   }
 }
 
-/* Extra-small phones need slightly tighter footer sizing. */
 @media (max-width: 374.98px) {
-  .site-footer {
-    padding: 1.5rem 0;
-  }
-
   .footer-logo {
     width: 50px;
     height: 50px;
   }
 
-  .footer-item {
-    font-size: 0.84rem;
-    padding: 0.1rem 0.2rem;
+  .footer-item,
+  .site-footer .small {
+    font-size: 0.8rem;
   }
 
   .social-link {
@@ -618,25 +547,4 @@ a { color: inherit; }
     height: 32px;
     font-size: 0.85rem;
   }
-
-  .site-footer .small {
-    font-size: 0.75rem;
-  }
-
-  .carousel1 {
-    background: #f8ead9;
-  }
-}
-.badge:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(194, 106, 45, 0.24);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  font-size: 1.05em;
-}
-.buy-link:hover::after {
-    content: "Buy?";
-    color: blue;
-    font-family: Arial;
-    margin-left: 5px;
-    font-size: 1.05em;
 }
